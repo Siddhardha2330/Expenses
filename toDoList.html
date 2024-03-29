@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Label and Button</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Centering the container */
+        .container1 {
+            width: 40%;
+            margin: 100px auto; /* Center the container vertically and horizontally */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style for the header */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the input field and button */
+        #inputField {
+            width: 70%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            flex: 1;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Style for the task box */
+        .taskbox {
+            display: flex;
+            justify-content: space-between; /* Aligns items to the left and right edges */
+            align-items: center; /* Centers items vertically */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            width: 70%;
+        }
+
+        /* Style for the task text */
+        .taskbox .pbox {
+            /* Add styles if necessary */
+        }
+
+        /* Style for the remove task button */
+        .taskbox button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 1px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container1">
+    <h1>ToDo List</h1>
+    <div class="container2">
+    
+    <input type="text" id="inputField" placeholder="Type your task">
+    <button onclick="addTask()">Add Task</button>
+    </div>
+    
+<div class="container3">
+    
+</div>
+</div>
+
+<script>
+    var n = 0;
+
+function addTask() {
+    var text = document.getElementById('inputField').value;
+    n += 1;
+
+    var taskHTML = '<div class="taskbox" id="task-' + n + '">';
+    taskHTML += '<div class="pbox"><p>' + text + '</p></div>';
+    taskHTML += '<div class="bbox"><button onclick="removeTask(' + n + ')">Remove</button></div>'; 
+    taskHTML += '</div>';
+
+    document.querySelector('.container3').innerHTML += taskHTML;
+    document.getElementById('inputField').value=' ';
+}
+
+    function removeTask(id){
+            var taskremove=document.getElementById('task-'+id);
+            if(taskremove){
+                taskremove.remove();
+            }
+    }
+</script>
+
+</body>
+</html>
